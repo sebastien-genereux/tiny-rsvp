@@ -1,0 +1,25 @@
+<h1>{{ .EventName }}</h1>
+
+<p>When: {{ .Date }}, {{ .Time }}</p>
+<p>Where: {{ .Location }}</p>
+<p>What: {{ .Description }}</p>
+<p>Questions? Contact {{ .HostName }} at {{ .Contact }}</p>
+
+<p>Please fill and submit the below information:</p>
+<form action="/submit" method="POST">
+<p>
+    <label for="name">Family Name:</label>
+    <input name="name" type="text" placeholder="Siena" />
+</p>
+<p>
+    <label for="count">Number of People:</label>
+    <input name="count" type="number" placeholder="1" />
+</p>
+<p>
+    <label for="contact">E-Mail (to contact for changes/cancellation):</label>
+    <input name="contact" type="email" placeholder="catherine@siena.org" />
+</p>
+<p>
+    <input type="submit" value="Submit" />
+</p>
+</form>
