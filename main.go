@@ -141,5 +141,7 @@ func main() {
     http.HandleFunc("/", rsvpHandler)
 	http.HandleFunc("/submit", submitHandler)
     http.HandleFunc("/thanks", thanksHandler)
+	http.Handle("/web/", http.StripPrefix("/web/", http.FileServer(http.Dir("web"))))
+
 	log.Fatal(http.ListenAndServe(":" + serverPort, nil))
 }

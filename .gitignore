@@ -1,2 +1,8 @@
 # don't commit private event details
 event.yml
+
+# don't commit node modules
+node_modules/
+
+# don't commit databases
+databases/*
