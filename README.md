@@ -7,3 +7,9 @@ The data entry form, as defined by *web/templates/rsvp.html* will ask for the at
 Those details are then saved to a timestamped .csv saved in databases/ which you will need to fetch (ex. via scp) to see you attendee list. At the top of the database file is a header, defined by *totalHeader* which keeps a running total of attendees for you. Input validation is done client side through form types in the *web/templates/rsvp.html*
 
 Feel free to fork, add/change features as desired. The intent was the features minimal but useful.
+
+## TODO
+
+- add styling to pages except rsvp.html
+- more thorough testing
+- create a dockerfile
