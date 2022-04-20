@@ -6,6 +6,8 @@
 ARG UID
 ARG GID
 
+ARG PORT
+
 ##
 # BUILD
 ##
@@ -36,7 +38,7 @@ COPY configs/ ./configs
 COPY --chown=1000:1000 /databases /databases
 COPY web/ ./web
 
-EXPOSE 8080
+EXPOSE $PORT
 
 USER $UID:$GID
 

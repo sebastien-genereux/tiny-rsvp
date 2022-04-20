@@ -16,3 +16,5 @@ Feel free to fork, add/change features as desired. The intent was the features m
 ./compose.sh build
 ./compose.sh up
 ```
+
+If you wish to change the listening port (currently set to 8080) ensure to update *serverPort* in main.go as well as the **PORT** build-arg in *compose.sh* 
