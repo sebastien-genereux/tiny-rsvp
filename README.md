@@ -10,6 +10,4 @@ Feel free to fork, add/change features as desired. The intent was the features m
 
 ## TODO
 
-- add styling to pages except rsvp.html
-- more thorough testing
 - create a dockerfile

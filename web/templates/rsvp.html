@@ -6,7 +6,7 @@
         <link href="/web/css/output.css" rel="stylesheet">
     </head>
     <body>
-        <div class="bg-yellow-200 text-gray-800 container mx-auto font-mono text-lg">
+        <div class="h-screen bg-yellow-200 text-gray-800 container mx-auto font-mono text-lg">
             <h1 class="text-5xl font-bold text-center py-5">
                 {{ .EventName }}
             </h1>
@@ -15,7 +15,7 @@
                 <p>{{ .Description }}</p>
                 <p>Time: {{ .Date }}, {{ .Time }}</p>
                 <p>Place: {{ .Location }}</p>
-                <p>Questions? Contact {{ .HostName }} at {{ .Contact }}</p>
+                <p>Questions? Contact {{ .HostName }} at <a class="underline" href="mailto:{{ .Contact }}?subject={{ .EventName }} Question">{{ .Contact }}</a></p>
             </div>
             
             <p class="font-bold">Please fill and submit the below information:</p>
@@ -26,7 +26,7 @@
             </p>
             <p class="pt-3">
                 <label for="count">Number of People:</label>
-                <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="count" type="number" placeholder="2" min="1"/>
+                <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="count" type="number" placeholder="2" min="1" required/>
             </p>
             <p class="pt-3">
                 <label for="contact">E-Mail (to contact for changes/cancellation):</label>
@@ -35,7 +35,7 @@
             <p class="pt-3">
                 <label for="comments">Comments:</label>
                 <br>
-                <textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="comments" placeholder="allergies?" cols="80" rows="3"></textarea>
+                <textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="comments" placeholder="allergies?" cols="80" rows="2"></textarea>
             </p>
             <p class="py-3">
                 <input class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" type="submit" value="Submit" />

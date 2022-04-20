@@ -1,1 +1,13 @@
-<p>You're early! Registration for this event will open {{ .Start }}</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/web/css/output.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="h-screen bg-yellow-200 text-gray-800 container mx-auto font-mono text-lg">
+            <p class="font-bold text-center py-5">You're early! Registration for this event will open {{ .StartStr }}</p>
+        </div>
+    </body>
+</html>
