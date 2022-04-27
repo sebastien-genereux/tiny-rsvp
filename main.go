@@ -101,33 +101,37 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// Get current time a unix timestamp for file naming
+	timeStr := strconv.Itoa(int(time.Now().Unix()))
+
 	// Read the config file
 	configFile, err := os.ReadFile(configPath)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalln(err)
 	}
 
 	// Parse the configuration file and unmarshal into global config variable
-	err2 := yaml.Unmarshal(configFile, &configData)
-	if err2 != nil {
-		log.Fatal(err2)
+	err = yaml.Unmarshal(configFile, &configData)
+	if err != nil {
+		log.Fatalln(err)
 	}
 
 	// Convert the rfc3339 time strings into time structs
 	startTime, err := time.Parse(time.RFC3339, configData.StartStr)
 	endTime, err2 := time.Parse(time.RFC3339, configData.EndStr)
 	if err != nil || err2 != nil{
-		log.Fatal(err, err2)
+		log.Fatalln(err, err2)
 	}
 	configData.StartTime, configData.EndTime = startTime, endTime
 	
 	// Create a timestamped database file and save a pointer to the global database variable
-	databaseName := "./databases/" + strconv.Itoa(int(time.Now().Unix())) + "_rsvp_" + configData.EventName + ".csv"
+	databaseName := "./databases/" + timeStr + "_rsvp_" + configData.EventName + ".csv"
 	databaseLocal, err2 := os.Create(databaseName)
 	if err2 != nil {
-		log.Fatal(err2)
+		log.Fatalln(err2)
 	}
 	databaseFile = databaseLocal
+	databaseFile.Chmod(0664)
 	defer databaseFile.Close()
 
 	// Write the header info in the database file
@@ -143,5 +147,7 @@ func main() {
     http.HandleFunc("/thanks", thanksHandler)
 	http.Handle("/web/", http.StripPrefix("/web/", http.FileServer(http.Dir("web"))))
 
-	log.Fatal(http.ListenAndServe(":" + serverPort, nil))
+	log.Printf("Starting server on 127.0.0.1:%s\n", serverPort)
+
+	log.Fatalln(http.ListenAndServe(":" + serverPort, nil))
 }

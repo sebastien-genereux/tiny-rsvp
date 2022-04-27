@@ -12,7 +12,7 @@ ARG PORT
 # BUILD
 ##
 
-FROM golang:1.18-stretch AS build 
+FROM golang:1.18-bullseye AS build 
 
 WORKDIR /app
 
